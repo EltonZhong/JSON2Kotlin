@@ -1,4 +1,3 @@
-const _ = require('lodash');
 
 const _json = {
     "lastModifiedDate": "2018-12-26T13:17:55.050Z",
@@ -26,6 +25,7 @@ data class Example(
 )
 `
     console.log(template);
+    return template;
 }
 
 function getVals(obj) {
@@ -58,5 +58,9 @@ function getType(va) {
             return 'List<Any>';
         }
         return `List<${getType(va[0])}>`
+    }
+
+    if (_.isObject(va)) {
+        return 'Any';
     }
 }
